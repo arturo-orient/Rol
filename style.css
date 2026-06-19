@@ -1,0 +1,373 @@
+* {
+    box-sizing: border-box;
+    font-family: "Times New Roman", Times, serif;
+}
+
+body {
+    background-color: #f0f0f0; /* Outer background */
+    padding: 20px;
+    margin: 0;
+}
+
+.sheet {
+    background-color: #ffffff;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 2px solid #000;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+.controls-bar {
+    max-width: 900px;
+    margin: 0 auto 10px auto;
+    display: flex;
+    gap: 10px;
+    padding: 10px;
+    background: #333;
+    color: white;
+    border-radius: 5px;
+}
+
+.controls-bar button {
+    padding: 8px 15px;
+    cursor: pointer;
+    border: none;
+    background: #fff;
+    color: #333;
+    font-weight: bold;
+    border-radius: 3px;
+}
+
+.controls-bar button:hover {
+    background: #eee;
+}
+
+/* Base elements */
+input[type="text"] {
+    border: none;
+    border-bottom: 1px solid #000;
+    outline: none;
+    background: transparent;
+    font-family: inherit;
+    font-size: 16px;
+    padding: 2px 5px;
+}
+
+.box {
+    border: 2px solid #000;
+    padding: 10px;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+}
+
+.mt-1 { margin-top: 10px; }
+.mt-2 { margin-top: 20px; }
+
+/* Grid layouts */
+.main-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.grid-2-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.grid-3-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+}
+
+.field-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.field-row label {
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+.field-row input[type="text"] {
+    flex: 1;
+}
+
+.split {
+    display: flex;
+    gap: 20px;
+}
+
+.split div {
+    display: flex;
+    flex: 1;
+    align-items: center;
+}
+
+/* Header */
+.header-box {
+    text-align: center;
+    border: 3px solid #000;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+.header-box h1 {
+    margin: 0;
+    font-size: 48px;
+    letter-spacing: 5px;
+}
+.header-box p {
+    margin: 0;
+    font-size: 24px;
+}
+
+.center-title {
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+/* Characteristics */
+.caract-list {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.caract-item {
+    display: flex;
+    align-items: center;
+}
+.caract-item label {
+    width: 120px;
+}
+.caract-item input[type="text"] {
+    width: 80px;
+    margin-right: 10px;
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid #000;
+    margin: 10px 0;
+}
+
+/* Number Grids for HP and SAN */
+.number-grid {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 5px;
+    text-align: center;
+}
+.number-grid-sm {
+    display: grid;
+    grid-template-columns: repeat(25, 1fr);
+    gap: 2px;
+    text-align: center;
+    font-size: 12px;
+}
+.num-box {
+    cursor: pointer;
+    user-select: none;
+    padding: 1px;
+    border: 1px solid transparent;
+    border-radius: 50%;
+}
+.num-box.crossed {
+    color: red;
+    font-weight: bold;
+    text-decoration: none;
+    border-color: red;
+}
+
+/* Skills */
+.skill-list {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.skill-item {
+    display: flex;
+    align-items: center;
+}
+.skill-item label {
+    flex: 1;
+    font-size: 14px;
+}
+.skill-item input[type="text"] {
+    width: 40px;
+    margin-right: 5px;
+    text-align: center;
+}
+.skill-item input.dyn-s-name {
+    flex: 1;
+    width: auto;
+    text-align: left;
+    border: none;
+    border-bottom: 1px solid #aaa;
+    background: transparent;
+    outline: none;
+}
+.bonus-input {
+    width: 40px;
+    margin-bottom: 5px;
+}
+
+/* Weapons & Inventory Grids */
+.weapons-grid {
+    display: grid;
+    grid-template-columns: 3fr 1fr 2fr 1fr 3fr auto;
+    gap: 10px;
+    font-weight: bold;
+    border-bottom: 1px solid #000;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+}
+.weapon-row {
+    display: grid;
+    grid-template-columns: 3fr 1fr 2fr 1fr 3fr auto;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 5px;
+}
+.weapon-row input {
+    width: 100%;
+}
+
+.inventory-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 3fr auto;
+    gap: 10px;
+    font-weight: bold;
+    border-bottom: 1px solid #000;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+}
+
+/* Spells / Powers Grids */
+.spells-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 2fr 30px;
+    gap: 10px;
+    font-weight: bold;
+    border-bottom: 1px solid #000;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+}
+.spell-item {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px dashed #ccc;
+}
+.spell-item:last-child {
+    border-bottom: none;
+}
+.spell-row-top {
+    display: grid;
+    grid-template-columns: 2fr 1fr 2fr 30px;
+    gap: 10px;
+    align-items: center;
+}
+
+/* Notes Grid */
+.note-item {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-bottom: 15px;
+    padding: 10px;
+    background-color: #fcfcfc;
+    border: 1px solid #ddd;
+    border-left: 4px solid #666;
+    border-radius: 4px;
+}
+.note-item:last-child {
+    margin-bottom: 5px;
+}
+.note-row-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+.note-row-top input.dyn-n-title {
+    flex-grow: 1;
+    border: none;
+    border-bottom: 1px solid #aaa;
+    background: transparent;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 4px 0;
+    outline: none;
+}
+.note-row-top input.dyn-n-title:focus {
+    border-bottom: 1px solid #000;
+}
+.note-item textarea.dyn-n-desc {
+    border: 1px solid #ddd;
+    background: #fff;
+    border-radius: 3px;
+    padding: 8px;
+}
+
+.inv-row {
+    display: grid;
+    grid-template-columns: 2fr 1fr 3fr auto;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 5px;
+}
+.inv-row input {
+    width: 100%;
+}
+
+.btn-remove {
+    background: transparent;
+    color: red;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+}
+.btn-remove:hover {
+    background: #fee;
+}
+
+.page-break {
+    margin: 40px 0;
+    border-top: 2px dashed #ccc;
+}
+
+@media print {
+    body {
+        background: none;
+        padding: 0;
+    }
+    .sheet {
+        border: none;
+        box-shadow: none;
+        max-width: 100%;
+        padding: 0;
+    }
+    .controls-bar, .no-print {
+        display: none !important;
+    }
+    .page-break {
+        page-break-after: always;
+        border: none;
+        margin: 0;
+    }
+}

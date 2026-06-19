@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hoja de Personaje - Stormbringer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="controls-bar no-print">
+        <button id="btn-export">Exportar Ficha</button>
+        <button id="btn-import-trigger">Importar Ficha</button>
+        <input type="file" id="file-import" accept=".json" style="display:none">
+        <button id="btn-clear" style="color:red; margin-left: auto;">Borrar Datos</button>
+    </div>
+
+    <div class="sheet">
+        <header class="header-box">
+            <h1>STORMBRINGER 3</h1>
+            <p>Hoja de Personaje</p>
+        </header>
+
+        <div class="main-grid">
+            <!-- COLUMNA IZQUIERDA: DATOS PERSONALES -->
+            <div class="column">
+                <div class="box field-row">
+                    <label>NOMBRE</label>
+                    <input type="text" id="nombre">
+                </div>
+                <div class="box field-row split">
+                    <div><label>SEXO</label><input type="text" id="sexo"></div>
+                    <div><label>EDAD</label><input type="text" id="edad"></div>
+                </div>
+                <div class="box field-row split">
+                    <div><label>OJOS</label><input type="text" id="ojos"></div>
+                    <div><label>CABELLO</label><input type="text" id="cabello"></div>
+                </div>
+                <div class="box field-row">
+                    <label>NACIONALIDAD</label>
+                    <input type="text" id="nacionalidad">
+                </div>
+                <div class="box field-row">
+                    <label>CLASE SOCIAL</label>
+                    <input type="text" id="clasesocial">
+                </div>
+                <div class="box field-row" style="margin-top: 20px;">
+                    <label>Armadura</label>
+                    <input type="text" id="armadura" style="width:70%;">
+                </div>
+            </div>
+
+            <!-- COLUMNA DERECHA: CARACTERISTICAS -->
+            <div class="column box">
+                <h3 class="center-title">CARACTERISTICAS</h3>
+                <div class="caract-list">
+                    <div class="caract-item"><label>FUErza</label><input type="text" id="fue"><input type="checkbox" id="fue_check"></div>
+                    <div class="caract-item"><label>CONstitución</label><input type="text" id="con"><input type="checkbox" id="con_check"></div>
+                    <div class="caract-item"><label>TAMaño</label><input type="text" id="tam"><input type="checkbox" id="tam_check"></div>
+                    <div class="caract-item"><label>INTeligencia</label><input type="text" id="int"><input type="checkbox" id="int_check"></div>
+                    <div class="caract-item"><label>PODer</label><input type="text" id="pod"><input type="checkbox" id="pod_check"></div>
+                    <div class="caract-item"><label>DEStreza</label><input type="text" id="des"><input type="checkbox" id="des_check"></div>
+                    <div class="caract-item"><label>CARisma</label><input type="text" id="car"><input type="checkbox" id="car_check"></div>
+                </div>
+                <hr>
+                <h3 class="center-title" style="margin-top: 10px;">PUNTOS DE VIDA</h3>
+                <div class="number-grid" id="hp-grid">
+                    <!-- Javascript generates 1 to 30 here -->
+                </div>
+                <div class="field-row mt-1" style="margin-top:10px;">
+                    <label>Herida grave</label>
+                    <input type="text" id="herida_grave" style="width: 50%;">
+                </div>
+            </div>
+        </div>
+
+        <div class="box mt-1">
+            <div style="display:flex; justify-content: space-between; align-items:center;">
+                <div>NLT: <input type="text" id="nlt" style="width: 50px; border-bottom:1px solid #000;"></div>
+                <h3 style="margin:0;">SALUD MENTAL</h3>
+                <div style="width:100px;"></div>
+            </div>
+            <div class="number-grid-sm mt-1" id="san-grid" style="margin-top:10px;">
+                <!-- Javascript generates 1 to 99 here -->
+            </div>
+        </div>
+
+        <div style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap:10px; margin-top:10px;">
+            <!-- COLUMNA 1: CONOCIMIENTO -->
+            <div class="box column">
+                <h3 class="center-title">CONOCIMIENTO</h3>
+                <div style="text-align:right;">Bonus <input type="text" id="bonus_conocimiento" class="bonus-input"></div>
+                <div class="skill-list" id="skills-conocimiento">
+                    <div class="skill-item"><label>Evaluar un tesoro</label><input type="text" id="sk_tesoro"><input type="checkbox" id="sk_tesoro_chk"></div>
+                    <div class="skill-item"><label>Primeros auxilios</label><input type="text" id="sk_auxilios"><input type="checkbox" id="sk_auxilios_chk"></div>
+                    <div class="skill-item"><label>Cartografía</label><input type="text" id="sk_cartografia"><input type="checkbox" id="sk_cartografia_chk"></div>
+                    <div class="skill-item"><label>Memorizar</label><input type="text" id="sk_memorizar"><input type="checkbox" id="sk_memorizar_chk"></div>
+                    <div class="skill-item"><label>Música y leyendas</label><input type="text" id="sk_musica"><input type="checkbox" id="sk_musica_chk"></div>
+                    <div class="skill-item"><label>Navegar</label><input type="text" id="sk_navegar"><input type="checkbox" id="sk_navegar_chk"></div>
+                    <div class="skill-item"><label>Conocimiento Plantas</label><input type="text" id="sk_plantas"><input type="checkbox" id="sk_plantas_chk"></div>
+                    <div class="skill-item"><label>Conocimiento Venenos</label><input type="text" id="sk_venenos"><input type="checkbox" id="sk_venenos_chk"></div>
+                    <div class="skill-item"><label>Artesanado</label><input type="text" id="sk_artesanado"><input type="checkbox" id="sk_artesanado_chk"></div>
+                </div>
+                <button class="btn-add-cat-skill no-print" data-target="skills-conocimiento" style="margin-top:5px; font-size:11px;">+ Añadir Conocimiento</button>
+
+                <div class="languages-grid" style="display: grid; grid-template-columns: 1fr 40px 20px 40px 20px; gap: 3px; align-items: center; text-align: center; margin-top: 15px;">
+                    <!-- Header -->
+                    <div style="text-align: left;"></div>
+                    <div style="font-weight: bold; font-size: 11px; grid-column: 2 / 4; line-height:1.1;">Leer/<br>Escribir</div>
+                    <div style="font-weight: bold; font-size: 11px; grid-column: 4 / 6;">Hablar</div>
+
+                    <!-- Lengua Común -->
+                    <div style="text-align: left; font-size:14px;"><label>Lengua Común</label></div>
+                    <input type="text" id="lang_comun_leer" style="text-align:center; padding: 2px 0;">
+                    <input type="checkbox" id="lang_comun_leer_chk">
+                    <input type="text" id="lang_comun_hablar" style="text-align:center; padding: 2px 0;">
+                    <input type="checkbox" id="lang_comun_hablar_chk">
+
+                    <!-- Bajo melnibones -->
+                    <div style="text-align: left; font-size:14px;"><label>Bajo melnibones</label></div>
+                    <input type="text" id="lang_bajo_leer" style="text-align:center; padding: 2px 0;">
+                    <input type="checkbox" id="lang_bajo_leer_chk">
+                    <input type="text" id="lang_bajo_hablar" style="text-align:center; padding: 2px 0;">
+                    <input type="checkbox" id="lang_bajo_hablar_chk">
+
+                    <!-- Alto melnibones -->
+                    <div style="text-align: left; font-size:14px;"><label>Alto melnibones</label></div>
+                    <input type="text" id="lang_alto_leer" style="text-align:center; padding: 2px 0;">
+                    <input type="checkbox" id="lang_alto_leer_chk">
+                    <input type="text" id="lang_alto_hablar" style="text-align:center; padding: 2px 0;">
+                    <input type="checkbox" id="lang_alto_hablar_chk">
+
+                    <!-- Pande -->
+                    <div style="text-align: left; font-size:14px;"><label>Pande</label></div>
+                    <input type="text" id="lang_pande_leer" style="text-align:center; padding: 2px 0;">
+                    <input type="checkbox" id="lang_pande_leer_chk">
+                    <input type="text" id="lang_pande_hablar" style="text-align:center; padding: 2px 0;">
+                    <input type="checkbox" id="lang_pande_hablar_chk">
+
+                    <!-- Orgino -->
+                    <div style="text-align: left; font-size:14px;"><label>Orgino</label></div>
+                    <input type="text" id="lang_orgino_leer" style="text-align:center; padding: 2px 0;">
+                    <input type="checkbox" id="lang_orgino_leer_chk">
+                    <input type="text" id="lang_orgino_hablar" style="text-align:center; padding: 2px 0;">
+                    <input type="checkbox" id="lang_orgino_hablar_chk">
+
+                    <!-- Otros -->
+                    <div style="text-align: left; font-size:14px;"><label>Otros</label></div>
+                    <input type="text" id="lang_otros_leer" style="text-align:center; padding: 2px 0;">
+                    <input type="checkbox" id="lang_otros_leer_chk">
+                    <input type="text" id="lang_otros_hablar" style="text-align:center; padding: 2px 0;">
+                    <input type="checkbox" id="lang_otros_hablar_chk">
+
+                    <!-- Custom 1 -->
+                    <div style="text-align: left;"><input type="text" id="lang_c1_name" style="width: 100%; font-size:14px;"></div>
+                    <input type="text" id="lang_c1_leer" style="text-align:center; padding: 2px 0;">
+                    <input type="checkbox" id="lang_c1_leer_chk">
+                    <input type="text" id="lang_c1_hablar" style="text-align:center; padding: 2px 0;">
+                    <input type="checkbox" id="lang_c1_hablar_chk">
+
+                    <!-- Custom 2 -->
+                    <div style="text-align: left;"><input type="text" id="lang_c2_name" style="width: 100%; font-size:14px;"></div>
+                    <input type="text" id="lang_c2_leer" style="text-align:center; padding: 2px 0;">
+                    <input type="checkbox" id="lang_c2_leer_chk">
+                    <input type="text" id="lang_c2_hablar" style="text-align:center; padding: 2px 0;">
+                    <input type="checkbox" id="lang_c2_hablar_chk">
+
+                    <!-- Custom 3 -->
+                    <div style="text-align: left;"><input type="text" id="lang_c3_name" style="width: 100%; font-size:14px;"></div>
+                    <input type="text" id="lang_c3_leer" style="text-align:center; padding: 2px 0;">
+                    <input type="checkbox" id="lang_c3_leer_chk">
+                    <input type="text" id="lang_c3_hablar" style="text-align:center; padding: 2px 0;">
+                    <input type="checkbox" id="lang_c3_hablar_chk">
+
+                    <!-- Custom 4 -->
+                    <div style="text-align: left;"><input type="text" id="lang_c4_name" style="width: 100%; font-size:14px;"></div>
+                    <input type="text" id="lang_c4_leer" style="text-align:center; padding: 2px 0;">
+                    <input type="checkbox" id="lang_c4_leer_chk">
+                    <input type="text" id="lang_c4_hablar" style="text-align:center; padding: 2px 0;">
+                    <input type="checkbox" id="lang_c4_hablar_chk">
+                </div>
+            </div>
+
+            <!-- COLUMNA 2: PERCEPCION Y AGILIDAD -->
+            <div class="box column" style="border: none; padding: 0;">
+                <div class="box column" style="margin-bottom: 10px;">
+                    <h3 class="center-title">PERCEPCION</h3>
+                    <div style="text-align:right;">Bonus <input type="text" id="bonus_percepcion" class="bonus-input"></div>
+                    <div class="skill-list" id="skills-percepcion">
+                        <div class="skill-item"><label>Buscar</label><input type="text" id="sk_buscar"><input type="checkbox" id="sk_buscar_chk"></div>
+                        <div class="skill-item"><label>Degustar</label><input type="text" id="sk_degustar"><input type="checkbox" id="sk_degustar_chk"></div>
+                        <div class="skill-item"><label>Equilibrio (10%)</label><input type="text" id="sk_equilibrio"><input type="checkbox" id="sk_equilibrio_chk"></div>
+                        <div class="skill-item"><label>Escuchar (10%)</label><input type="text" id="sk_escuchar"><input type="checkbox" id="sk_escuchar_chk"></div>
+                        <div class="skill-item"><label>Olfatear</label><input type="text" id="sk_olfatear"><input type="checkbox" id="sk_olfatear_chk"></div>
+                        <div class="skill-item"><label>Seguir Rastros</label><input type="text" id="sk_rastros"><input type="checkbox" id="sk_rastros_chk"></div>
+                        <div class="skill-item"><label>Ver (10%)</label><input type="text" id="sk_ver"><input type="checkbox" id="sk_ver_chk"></div>
+                    </div>
+                    <button class="btn-add-cat-skill no-print" data-target="skills-percepcion" style="margin-top:5px; font-size:11px;">+ Añadir Percepción</button>
+                </div>
+
+                <div class="box column" style="flex-grow: 1;">
+                    <h3 class="center-title">AGILIDAD</h3>
+                    <div style="text-align:right;">Bonus <input type="text" id="bonus_agilidad" class="bonus-input"></div>
+                    <div class="skill-list" id="skills-agilidad">
+                        <div class="skill-item"><label>Equitación</label><input type="text" id="sk_equitacion"><input type="checkbox" id="sk_equitacion_chk"></div>
+                        <div class="skill-item"><label>Evitar</label><input type="text" id="sk_evitar"><input type="checkbox" id="sk_evitar_chk"></div>
+                        <div class="skill-item"><label>Hacer volteretas</label><input type="text" id="sk_volteretas"><input type="checkbox" id="sk_volteretas_chk"></div>
+                        <div class="skill-item"><label>Nadar</label><input type="text" id="sk_nadar"><input type="checkbox" id="sk_nadar_chk"></div>
+                        <div class="skill-item"><label>Saltar (10%)</label><input type="text" id="sk_saltar"><input type="checkbox" id="sk_saltar_chk"></div>
+                        <div class="skill-item"><label>Trepar (10%)</label><input type="text" id="sk_trepar"><input type="checkbox" id="sk_trepar_chk"></div>
+                    </div>
+                    <button class="btn-add-cat-skill no-print" data-target="skills-agilidad" style="margin-top:5px; font-size:11px;">+ Añadir Agilidad</button>
+                </div>
+            </div>
+
+            <!-- COLUMNA 3: COMUNICACION, DISCRECION Y MANIPULACION -->
+            <div class="box column" style="border: none; padding: 0;">
+                <div class="box column" style="margin-bottom: 10px;">
+                    <h3 class="center-title">COMUNICACION</h3>
+                    <div style="text-align:right;">Bonus <input type="text" id="bonus_comunicacion" class="bonus-input"></div>
+                    <div class="skill-list" id="skills-comunicacion">
+                        <div class="skill-item"><label>Cantar</label><input type="text" id="sk_cantar"><input type="checkbox" id="sk_cantar_chk"></div>
+                        <div class="skill-item"><label>Crédito</label><input type="text" id="sk_credito"><input type="checkbox" id="sk_credito_chk"></div>
+                        <div class="skill-item"><label>Elocuencia</label><input type="text" id="sk_elocuencia"><input type="checkbox" id="sk_elocuencia_chk"></div>
+                        <div class="skill-item"><label>Persuadir</label><input type="text" id="sk_persuadir"><input type="checkbox" id="sk_persuadir_chk"></div>
+                    </div>
+                    <button class="btn-add-cat-skill no-print" data-target="skills-comunicacion" style="margin-top:5px; font-size:11px;">+ Añadir Comunicación</button>
+                </div>
+                
+                <div class="box column" style="margin-bottom: 10px;">
+                    <h3 class="center-title">DISCRECION</h3>
+                    <div style="text-align:right;">Bonus <input type="text" id="bonus_discrecion" class="bonus-input"></div>
+                    <div class="skill-list" id="skills-discrecion">
+                        <div class="skill-item"><label>Ocultarse</label><input type="text" id="sk_ocultarse"><input type="checkbox" id="sk_ocultarse_chk"></div>
+                        <div class="skill-item"><label>Moverse silenc.</label><input type="text" id="sk_moverse"><input type="checkbox" id="sk_moverse_chk"></div>
+                        <div class="skill-item"><label>Esconderse</label><input type="text" id="sk_esconderse"><input type="checkbox" id="sk_esconderse_chk"></div>
+                    </div>
+                    <button class="btn-add-cat-skill no-print" data-target="skills-discrecion" style="margin-top:5px; font-size:11px;">+ Añadir Discreción</button>
+                </div>
+
+                <div class="box column" style="flex-grow: 1;">
+                    <h3 class="center-title">MANIPULACION</h3>
+                    <div style="text-align:right;">Bonus <input type="text" id="bonus_manipulacion" class="bonus-input"></div>
+                    <div class="skill-list" id="skills-manipulacion">
+                        <div class="skill-item"><label>Disimular</label><input type="text" id="sk_disimular"><input type="checkbox" id="sk_disimular_chk"></div>
+                        <div class="skill-item"><label>Forzar Cerraduras</label><input type="text" id="sk_forzar"><input type="checkbox" id="sk_forzar_chk"></div>
+                        <div class="skill-item"><label>Hacer nudos</label><input type="text" id="sk_nudos"><input type="checkbox" id="sk_nudos_chk"></div>
+                        <div class="skill-item"><label>Juegos de manos</label><input type="text" id="sk_juegos"><input type="checkbox" id="sk_juegos_chk"></div>
+                        <div class="skill-item"><label>Malabares</label><input type="text" id="sk_malabares"><input type="checkbox" id="sk_malabares_chk"></div>
+                        <div class="skill-item"><label>Robar bolsas</label><input type="text" id="sk_robar"><input type="checkbox" id="sk_robar_chk"></div>
+                        <div class="skill-item"><label>Trampas</label><input type="text" id="sk_trampas"><input type="checkbox" id="sk_trampas_chk"></div>
+                    </div>
+                    <button class="btn-add-cat-skill no-print" data-target="skills-manipulacion" style="margin-top:5px; font-size:11px;">+ Añadir Manipulación</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ARMAS AHORA ES ANCHO COMPLETO -->
+        <div class="box mt-1 column">
+            <h3 class="center-title">ARMAS</h3>
+            <div class="weapons-grid">
+                <div class="weapon-header">Arma</div>
+                <div class="weapon-header" style="text-align:center">Ataque</div>
+                <div class="weapon-header" style="text-align:center">Daño</div>
+                <div class="weapon-header" style="text-align:center">Parada</div>
+                <div class="weapon-header">Efecto</div>
+                <div class="weapon-header"></div>
+            </div>
+            <div id="weapons-container">
+                <!-- Dynamic Weapons -->
+            </div>
+            <button id="btn-add-weapon" class="mt-1 no-print" style="margin-top:10px">+ Añadir Arma</button>
+        </div>
+
+
+
+        <div class="page-break"></div>
+
+        <!-- HECHIZOS Y PODERES -->
+        <div class="box mt-1 column">
+            <h3 class="center-title">HECHIZOS Y PODERES</h3>
+            <div class="spells-grid">
+                <div class="weapon-header">Hechizo/Habilidad</div>
+                <div class="weapon-header" style="text-align:center">Coste Maná</div>
+                <div class="weapon-header">Efecto</div>
+                <div class="weapon-header"></div>
+            </div>
+            <div id="spells-container">
+                <!-- Dynamic Spells -->
+            </div>
+            <button id="btn-add-spell" class="mt-1 no-print" style="margin-top:10px">+ Añadir Hechizo</button>
+        </div>
+
+        <!-- INVENTARIO DINÁMICO -->
+        <div class="box mt-1 column">
+            <h3 class="center-title">INVENTARIO</h3>
+            <div class="inventory-grid">
+                <div class="inv-header">Objeto</div>
+                <div class="inv-header">Cantidad/Peso</div>
+                <div class="inv-header">Descripción</div>
+                <div class="inv-header"></div>
+            </div>
+            <div id="inventory-container">
+                <!-- Dynamic Inventory -->
+            </div>
+            <button id="btn-add-inventory" class="mt-1 no-print">+ Añadir Objeto</button>
+        </div>
+
+        <!-- INVOCACIONES -->
+        <div class="box mt-1">
+            <h3 class="center-title">INVOCACIONES</h3>
+            <div class="field-row split">
+                <div style="flex:1"><label>INT libre:</label><input type="text" id="int_libre" style="width:70%"></div>
+                <div style="flex:1"><label>INVOCACIÓN:</label><input type="text" id="invocacion" style="width:70%"></div>
+            </div>
+            <div class="column" style="margin-top:10px;">
+                <label>INVOCACIONES MEMORIZADAS:</label>
+                <textarea id="inv_memorizadas" rows="3" style="width:100%; border:none; border-bottom:1px solid #000; outline:none; resize:vertical;"></textarea>
+            </div>
+            <hr>
+            <div class="field-row split" style="margin-top:10px;">
+                <div style="flex:1"><label>CULTO:</label><input type="text" id="culto" style="width:70%"></div>
+                <div style="flex:1"><label>ELAN:</label><input type="text" id="elan" style="width:70%"></div>
+            </div>
+        </div>
+
+        <!-- NOTAS DINÁMICAS -->
+        <div class="box mt-1 column">
+            <h3 class="center-title">NOTAS Y DIARIO</h3>
+            <div id="notes-container">
+                <!-- Dynamic Notes -->
+            </div>
+            <button id="btn-add-note" class="mt-1 no-print" style="margin-top:10px">+ Añadir Nota</button>
+        </div>
+
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
