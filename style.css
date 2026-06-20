@@ -371,3 +371,88 @@ hr {
         margin: 0;
     }
 }
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 1024px) {
+    /* Tablet layout */
+    .grid-3-col {
+        grid-template-columns: 1fr 1fr;
+    }
+    .number-grid-sm {
+        grid-template-columns: repeat(20, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    /* Mobile layout */
+    body {
+        padding: 5px;
+    }
+    .sheet {
+        padding: 10px;
+    }
+    .header-box h1 {
+        font-size: 32px;
+    }
+    .grid-2-col, .grid-3-col, .main-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .field-row.split {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .field-row.split > div {
+        width: 100%;
+    }
+    
+    .number-grid {
+        grid-template-columns: repeat(5, 1fr);
+    }
+    .number-grid-sm {
+        grid-template-columns: repeat(10, 1fr);
+    }
+
+    /* Convert tables to stacked blocks */
+    .weapons-grid, .inventory-grid, .spells-grid {
+        display: none; /* Hide headers */
+    }
+    
+    .weapon-row, .inv-row {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 5px;
+        padding-bottom: 10px;
+        border-bottom: 1px dashed #ccc;
+    }
+    .weapon-row:last-child, .inv-row:last-child {
+        border-bottom: none;
+    }
+    
+    .spell-row-top {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 5px;
+    }
+    
+    .btn-remove {
+        align-self: flex-end;
+        padding: 5px 15px;
+        background: #fee;
+        border-radius: 4px;
+        margin-top: 5px;
+    }
+    
+    /* Make inputs full width inside stacked rows */
+    .weapon-row input, .inv-row input, .spell-row-top input {
+        width: 100%;
+        text-align: left !important;
+        background: #f9f9f9;
+        padding: 8px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+    }
+}
+
