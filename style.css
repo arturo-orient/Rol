@@ -375,8 +375,8 @@ hr {
 /* RESPONSIVE DESIGN */
 @media (max-width: 1024px) {
     /* Tablet layout */
-    .grid-3-col {
-        grid-template-columns: 1fr 1fr;
+    .grid-2-col, .grid-3-col, .main-grid {
+        grid-template-columns: 1fr;
     }
     .number-grid-sm {
         grid-template-columns: repeat(20, 1fr);
@@ -393,9 +393,6 @@ hr {
     }
     .header-box h1 {
         font-size: 32px;
-    }
-    .grid-2-col, .grid-3-col, .main-grid {
-        grid-template-columns: 1fr;
     }
     
     .field-row.split {
